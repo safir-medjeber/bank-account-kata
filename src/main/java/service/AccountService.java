@@ -1,9 +1,7 @@
-package services;
+package service;
 
-import models.BankAccount;
-import services.interfaces.BankStatementService;
-import services.interfaces.DepositOperations;
-import services.interfaces.WithdrawalOperations;
+import model.BankAccount;
+
 import java.time.ZonedDateTime;
 
 

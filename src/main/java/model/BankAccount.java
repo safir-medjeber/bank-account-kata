@@ -1,9 +1,8 @@
-package models;
+package model;
 
 import java.util.Queue;
 
 public class BankAccount {
     public int balance;
     public Queue<AccountStatement> accountStatements;
-
 }

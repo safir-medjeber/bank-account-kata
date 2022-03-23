@@ -1,12 +1,24 @@
-package models;
+package model;
 
 import java.time.ZonedDateTime;
 
 public class AccountStatement {
 
-    public ZonedDateTime date;
-    public int amount;
-   public String operation;
+    public ZonedDateTime getDate() {
+        return date;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public String getOperation() {
+        return operation;
+    }
+
+    private final ZonedDateTime date;
+    private final int amount;
+    private final String operation;
 
     public AccountStatement(ZonedDateTime date, int amount, String operation) {
         this.date = date;

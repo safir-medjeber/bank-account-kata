@@ -1,8 +1,8 @@
-import models.ClientAccount;
+import model.ClientAccount;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import services.AccountService;
-import services.StatementService;
+import service.AccountService;
+import service.StatementService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -84,8 +84,8 @@ class AccountTest {
         ClientAccount clientAccount = new ClientAccount();
         accountService.deposit(clientAccount, 10);
 
-        assertEquals(clientAccount.accountStatements.peek() != null ? clientAccount.accountStatements.peek().amount : 0, 10);
-        assertEquals(clientAccount.accountStatements.peek() != null ? clientAccount.accountStatements.peek().operation : null, "deposit");
+        assertEquals(clientAccount.accountStatements.peek() != null ? clientAccount.accountStatements.peek().getAmount() : 0, 10);
+        assertEquals(clientAccount.accountStatements.peek() != null ? clientAccount.accountStatements.peek().getOperation() : null, "deposit");
 
 
     }
@@ -97,8 +97,8 @@ class AccountTest {
 
         accountService.withdrawal(account, 10);
 
-        assertEquals(-10.0, account.accountStatements.peek() != null ? account.accountStatements.peek().amount : 0);
-        assertEquals("withdrawal", account.accountStatements.peek() != null ? account.accountStatements.peek().operation : null);
+        assertEquals(-10.0, account.accountStatements.peek() != null ? account.accountStatements.peek().getAmount() : 0);
+        assertEquals("withdrawal", account.accountStatements.peek() != null ? account.accountStatements.peek().getOperation() : null);
 
     }
 

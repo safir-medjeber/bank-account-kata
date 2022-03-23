@@ -1,6 +1,6 @@
-package services.interfaces;
+package service;
 
-import models.BankAccount;
+import model.BankAccount;
 
 public interface WithdrawalOperations {
 
