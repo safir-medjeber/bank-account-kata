@@ -4,6 +4,7 @@ import models.BankAccount;
 import services.interfaces.BankStatementService;
 import services.interfaces.DepositOperations;
 import services.interfaces.WithdrawalOperations;
+import java.time.ZonedDateTime;
 
 
 public class AccountService implements DepositOperations, WithdrawalOperations {
@@ -15,12 +16,12 @@ public class AccountService implements DepositOperations, WithdrawalOperations {
 
     public void deposit(BankAccount account, int amount) {
         account.balance += amount;
-        this.bankStatementService.updateAccountStatement(account, amount, "deposit");
+        this.bankStatementService.updateAccountStatement(account, amount, "deposit", ZonedDateTime.now());
     }
 
     public void withdrawal(BankAccount account, int amount) {
         account.balance -= amount;
-        this.bankStatementService.updateAccountStatement(account, Math.negateExact(amount) , "withdrawal");
+        this.bankStatementService.updateAccountStatement(account, Math.negateExact(amount) , "withdrawal",ZonedDateTime.now() );
     }
 
 }

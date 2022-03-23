@@ -81,11 +81,11 @@ class AccountTest {
     @Test
     void deposit_should_update_account_statement() {
 
-        ClientAccount account = new ClientAccount();
-        accountService.deposit(account, 10);
+        ClientAccount clientAccount = new ClientAccount();
+        accountService.deposit(clientAccount, 10);
 
-        assertEquals(account.accountStatements.peek() != null ? account.accountStatements.peek().amount : 0, 10);
-        assertEquals(account.accountStatements.peek() != null ? account.accountStatements.peek().operation : null, "deposit");
+        assertEquals(clientAccount.accountStatements.peek() != null ? clientAccount.accountStatements.peek().amount : 0, 10);
+        assertEquals(clientAccount.accountStatements.peek() != null ? clientAccount.accountStatements.peek().operation : null, "deposit");
 
 
     }
