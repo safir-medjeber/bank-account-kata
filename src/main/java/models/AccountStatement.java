@@ -13,4 +13,13 @@ public class AccountStatement {
         this.amount = amount;
         this.operation = operation;
     }
+
+    @Override
+    public String toString() {
+        return "AccountStatement{" +
+                "date=" + date +
+                ", amount=" + amount +
+                ", operation='" + operation + '\'' +
+                '}';
+    }
 }

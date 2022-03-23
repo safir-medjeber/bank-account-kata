@@ -9,4 +9,5 @@ public class ClientAccount extends BankAccount {
         accountStatements = new LinkedList<>();
     }
 
+
 }

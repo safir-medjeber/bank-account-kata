@@ -9,10 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class AccountTest {
 
     private AccountService accountService;
-
+    private StatementService statementService;
     @BeforeEach
     void before() {
-        StatementService statementService = new StatementService();
+         statementService = new StatementService();
         accountService = new AccountService(statementService);
     }
 
@@ -100,8 +100,14 @@ class AccountTest {
         assertEquals(-10.0, account.accountStatements.peek() != null ? account.accountStatements.peek().amount : 0);
         assertEquals("withdrawal", account.accountStatements.peek() != null ? account.accountStatements.peek().operation : null);
 
-
     }
 
+    @Test
+    public void test_print_account_statement() {
+        ClientAccount clientAccount = new ClientAccount();
+        accountService.deposit(clientAccount, 10);
+        accountService.deposit(clientAccount, 10);
 
+        statementService.printAccountStatement(clientAccount);
+    }
 }
