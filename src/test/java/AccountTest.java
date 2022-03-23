@@ -1,23 +1,24 @@
-import models.Account;
+import models.ClientAccount;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import services.AccountService;
+import services.StatementService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AccountTest {
 
-
     private AccountService accountService;
 
     @BeforeEach
-            void before(){
-        accountService = new AccountService();
+    void before() {
+        StatementService statementService = new StatementService();
+        accountService = new AccountService(statementService);
     }
 
     @Test
     public void deposit_amount_should_increase_balance_account_with_amount() {
-        Account account = new Account();
+        ClientAccount account = new ClientAccount();
         int depositAmount = 10;
         int balanceAccountBeforeDeposit = account.balance;
 
@@ -30,7 +31,7 @@ class AccountTest {
 
     @Test
     public void several_deposit_amount_should_increase_balance_account_with_amounts() {
-        Account account = new Account();
+        ClientAccount account = new ClientAccount();
 
 
         int firstDepositAmount = 10;
@@ -48,8 +49,8 @@ class AccountTest {
 
 
     @Test
-     void withdrawal_amount_should_decrease_balance_account_with_amount() {
-        Account account = new Account();
+    void withdrawal_amount_should_decrease_balance_account_with_amount() {
+        ClientAccount account = new ClientAccount();
         int withdrawal = 10;
         int balanceAccountBeforeWithdrawal = account.balance;
 
@@ -61,8 +62,8 @@ class AccountTest {
 
 
     @Test
-     void several_withdrawal_amount_should_decrease_balance_account_with_amounts() {
-        Account account = new Account();
+    void several_withdrawal_amount_should_decrease_balance_account_with_amounts() {
+        ClientAccount account = new ClientAccount();
 
         int firstWithdrawalAmount = 10;
         int secondWithdrawalAmount = 20;
@@ -78,26 +79,26 @@ class AccountTest {
     }
 
     @Test
-     void deposit_should_update_account_statement() {
+    void deposit_should_update_account_statement() {
 
-        Account account = new Account();
+        ClientAccount account = new ClientAccount();
         accountService.deposit(account, 10);
 
-        assertEquals(account.accountStatements.peek().amount, 10);
-        assertEquals(account.accountStatements.peek().operation, "deposit");
+        assertEquals(account.accountStatements.peek() != null ? account.accountStatements.peek().amount : 0, 10);
+        assertEquals(account.accountStatements.peek() != null ? account.accountStatements.peek().operation : null, "deposit");
 
 
     }
 
 
     @Test
-     void withdrawal_should_update_account_statement() {
-        Account account = new Account();
+    void withdrawal_should_update_account_statement() {
+        ClientAccount account = new ClientAccount();
 
         accountService.withdrawal(account, 10);
 
-        assertEquals(-10.0, account.accountStatements.peek().amount);
-        assertEquals("withdrawal", account.accountStatements.peek().operation);
+        assertEquals(-10.0, account.accountStatements.peek() != null ? account.accountStatements.peek().amount : 0);
+        assertEquals("withdrawal", account.accountStatements.peek() != null ? account.accountStatements.peek().operation : null);
 
 
     }

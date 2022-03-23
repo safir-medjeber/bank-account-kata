@@ -1,27 +1,26 @@
 package services;
 
-import models.Account;
-import models.AccountStatement;
+import models.BankAccount;
+import services.interfaces.BankStatementService;
+import services.interfaces.DepositOperations;
+import services.interfaces.WithdrawalOperations;
 
-import java.time.ZonedDateTime;
 
-public class AccountService {
+public class AccountService implements DepositOperations, WithdrawalOperations {
+    BankStatementService bankStatementService;
 
-    public AccountService() {
+    public AccountService(BankStatementService bankStatementService) {
+        this.bankStatementService = bankStatementService;
     }
 
-    public void deposit(Account account, int amount) {
+    public void deposit(BankAccount account, int amount) {
         account.balance += amount;
-        updateAccountStatement(account, amount, "deposit");
+        this.bankStatementService.updateAccountStatement(account, amount, "deposit");
     }
 
-    public void withdrawal(Account account, int amount) {
+    public void withdrawal(BankAccount account, int amount) {
         account.balance -= amount;
-        updateAccountStatement(account, Math.negateExact(amount) , "withdrawal");
-    }
-
-    private void updateAccountStatement(Account account, int amount, String operation) {
-        account.accountStatements.add(new AccountStatement(ZonedDateTime.now(), amount, operation));
+        this.bankStatementService.updateAccountStatement(account, Math.negateExact(amount) , "withdrawal");
     }
 
 }
