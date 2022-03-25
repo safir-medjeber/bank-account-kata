@@ -2,9 +2,9 @@ package model;
 
 import java.util.LinkedList;
 
-public class ClientAccount extends BankAccount {
+public class PersonalAccount extends BankAccount {
 
-    public ClientAccount() {
+    public PersonalAccount() {
         balance = 0;
         accountStatements = new LinkedList<>();
     }

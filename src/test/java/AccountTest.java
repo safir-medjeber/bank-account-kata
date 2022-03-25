@@ -1,4 +1,5 @@
-import model.ClientAccount;
+import model.BankOperationType;
+import model.PersonalAccount;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import service.AccountService;
@@ -19,7 +20,7 @@ class AccountTest {
 
     @Test
     public void deposit_amount_should_increase_balance_account_with_amount() {
-        ClientAccount account = new ClientAccount();
+        PersonalAccount account = new PersonalAccount();
         double depositAmount = 10.50;
         double balanceAccountBeforeDeposit = account.balance;
 
@@ -32,7 +33,7 @@ class AccountTest {
 
     @Test
     public void several_deposit_amount_should_increase_balance_account_with_amounts() {
-        ClientAccount account = new ClientAccount();
+        PersonalAccount account = new PersonalAccount();
         double firstDepositAmount = 10;
         double secondDepositAmount = 20;
 
@@ -49,7 +50,7 @@ class AccountTest {
 
     @Test
     void withdrawal_amount_should_decrease_balance_account_with_amount() {
-        ClientAccount account = new ClientAccount();
+        PersonalAccount account = new PersonalAccount();
         double withdrawal = 10.33;
         double balanceAccountBeforeWithdrawal = account.balance;
 
@@ -62,7 +63,7 @@ class AccountTest {
 
     @Test
     void several_withdrawal_amount_should_decrease_balance_account_with_amounts() {
-        ClientAccount account = new ClientAccount();
+        PersonalAccount account = new PersonalAccount();
 
         double firstWithdrawalAmount = 10.5;
         double secondWithdrawalAmount = 20.50;
@@ -80,11 +81,11 @@ class AccountTest {
     @Test
     void deposit_should_update_account_statement() {
 
-        ClientAccount clientAccount = new ClientAccount();
-        accountService.deposit(clientAccount, 10.33);
+        PersonalAccount personalAccount = new PersonalAccount();
+        accountService.deposit(personalAccount, 10.33);
 
-        assertEquals(clientAccount.accountStatements.peek() != null ? clientAccount.accountStatements.peek().getAmount() : 0, 10.33);
-        assertEquals(clientAccount.accountStatements.peek() != null ? clientAccount.accountStatements.peek().getOperation() : null, "deposit");
+        assertEquals(10.33, personalAccount.accountStatements.peek() != null ? personalAccount.accountStatements.peek().getAmount() : 0);
+        assertEquals(BankOperationType.DEPOSIT, personalAccount.accountStatements.peek() != null ? personalAccount.accountStatements.peek().getBankOperationType() : null);
 
 
     }
@@ -92,21 +93,21 @@ class AccountTest {
 
     @Test
     void withdrawal_should_update_account_statement() {
-        ClientAccount account = new ClientAccount();
+        PersonalAccount account = new PersonalAccount();
 
         accountService.withdrawal(account, 10);
 
         assertEquals(-10.0, account.accountStatements.peek() != null ? account.accountStatements.peek().getAmount() : 0);
-        assertEquals("withdrawal", account.accountStatements.peek() != null ? account.accountStatements.peek().getOperation() : null);
+        assertEquals(BankOperationType.WITHDRAWAL, account.accountStatements.peek() != null ? account.accountStatements.peek().getBankOperationType() : null);
 
     }
 
     @Test
     public void test_prdouble_account_statement() {
-        ClientAccount clientAccount = new ClientAccount();
-        accountService.deposit(clientAccount, 10);
-        accountService.deposit(clientAccount, 10);
+        PersonalAccount personalAccount = new PersonalAccount();
+        accountService.deposit(personalAccount, 10);
+        accountService.deposit(personalAccount, 10);
 
-        statementService.printAccountStatement(clientAccount);
+        statementService.printAccountStatement(personalAccount);
     }
 }

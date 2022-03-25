@@ -12,18 +12,20 @@ public class AccountStatement {
         return amount;
     }
 
-    public String getOperation() {
-        return operation;
-    }
 
     private final ZonedDateTime date;
     private final double amount;
-    private final String operation;
 
-    public AccountStatement(ZonedDateTime date, double amount, String operation) {
+    public BankOperationType getBankOperationType() {
+        return bankOperationType;
+    }
+
+    private final BankOperationType bankOperationType;
+
+    public AccountStatement(BankOperationType bankOperationType, ZonedDateTime date, double amount) {
+        this.bankOperationType = bankOperationType;
         this.date = date;
         this.amount = amount;
-        this.operation = operation;
     }
 
     @Override
@@ -31,7 +33,7 @@ public class AccountStatement {
         return "AccountStatement{" +
                 "date=" + date +
                 ", amount=" + amount +
-                ", operation='" + operation + '\'' +
+                ", operation='" + bankOperationType + '\'' +
                 '}';
     }
 }
