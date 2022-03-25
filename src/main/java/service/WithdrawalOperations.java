@@ -4,6 +4,6 @@ import model.BankAccount;
 
 public interface WithdrawalOperations {
 
-    void withdrawal(BankAccount account, double amount);
+    void withdrawal(BankAccount bankAccount, double amount);
 
 }

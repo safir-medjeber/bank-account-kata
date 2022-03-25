@@ -10,9 +10,10 @@ class AccountTest {
 
     private AccountService accountService;
     private StatementService statementService;
+
     @BeforeEach
     void before() {
-         statementService = new StatementService();
+        statementService = new StatementService();
         accountService = new AccountService(statementService);
     }
 
