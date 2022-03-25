@@ -7,7 +7,6 @@ import java.time.ZonedDateTime;
 
 public interface BankStatementService {
 
-
      void updateAccountStatement(BankAccount account, double amount, BankOperationType operation, ZonedDateTime zonedDateTime);
 
      void printAccountStatement(BankAccount bankAccount);
