@@ -4,36 +4,33 @@ import java.time.ZonedDateTime;
 
 public class AccountStatement {
 
-    public ZonedDateTime getDate() {
-        return date;
+    private final double currentBalance;
+    private final BankOperationType bankOperationType;
+    private final ZonedDateTime date;
+    private final double amount;
+
+    public AccountStatement(BankOperationType bankOperationType, ZonedDateTime date, double amount, double currentBalance) {
+        this.bankOperationType = bankOperationType;
+        this.date = date;
+        this.amount = amount;
+        this.currentBalance = currentBalance;
+    }
+
+    public BankOperationType getBankOperationType() {
+        return bankOperationType;
     }
 
     public double getAmount() {
         return amount;
     }
 
-
-    private final ZonedDateTime date;
-    private final double amount;
-
-    public BankOperationType getBankOperationType() {
-        return bankOperationType;
-    }
-
-    private final BankOperationType bankOperationType;
-
-    public AccountStatement(BankOperationType bankOperationType, ZonedDateTime date, double amount) {
-        this.bankOperationType = bankOperationType;
-        this.date = date;
-        this.amount = amount;
-    }
-
     @Override
     public String toString() {
         return "AccountStatement{" +
-                "date=" + date +
+                "bankOperationType=" + bankOperationType +
+                ", date=" + date +
                 ", amount=" + amount +
-                ", operation='" + bankOperationType + '\'' +
+                ", balance=" + currentBalance +
                 '}';
     }
 }

@@ -8,16 +8,14 @@ import java.time.ZonedDateTime;
 
 public class StatementService implements BankStatementService {
 
-
     @Override
-    public void updateAccountStatement(BankAccount account, double amount, BankOperationType operation, ZonedDateTime zonedDateTime) {
-        account.accountStatements.add(new AccountStatement(operation, zonedDateTime, amount));
+    public void updateAccountStatement(BankAccount bankAccount, double amount, BankOperationType operation, ZonedDateTime zonedDateTime) {
+        var accountStatement = new AccountStatement(operation, zonedDateTime, amount, bankAccount.getBalance());
+        bankAccount.getAccountStatements().add(accountStatement);
     }
 
     @Override
     public void printAccountStatement(BankAccount bankAccount) {
-        bankAccount.accountStatements.forEach(System.out::println);
+        bankAccount.getAccountStatements().forEach(System.out::println);
     }
-
-
 }
