@@ -24,8 +24,8 @@ class AccountTest {
         double balanceAccountBeforeDeposit = account.balance;
 
         accountService.deposit(account, depositAmount);
-        double currentBalanceAccount = account.balance;
 
+        double currentBalanceAccount = account.balance;
         assertEquals(balanceAccountBeforeDeposit + depositAmount, currentBalanceAccount);
     }
 
@@ -33,8 +33,6 @@ class AccountTest {
     @Test
     public void several_deposit_amount_should_increase_balance_account_with_amounts() {
         ClientAccount account = new ClientAccount();
-
-
         double firstDepositAmount = 10;
         double secondDepositAmount = 20;
 
@@ -56,8 +54,8 @@ class AccountTest {
         double balanceAccountBeforeWithdrawal = account.balance;
 
         accountService.withdrawal(account, withdrawal);
-        double currentBalanceAccount = account.balance;
 
+        double currentBalanceAccount = account.balance;
         assertEquals(balanceAccountBeforeWithdrawal - withdrawal, currentBalanceAccount);
     }
 
