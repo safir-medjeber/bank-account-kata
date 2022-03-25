@@ -8,7 +8,7 @@ public class AccountStatement {
         return date;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
@@ -17,10 +17,10 @@ public class AccountStatement {
     }
 
     private final ZonedDateTime date;
-    private final int amount;
+    private final double amount;
     private final String operation;
 
-    public AccountStatement(ZonedDateTime date, int amount, String operation) {
+    public AccountStatement(ZonedDateTime date, double amount, String operation) {
         this.date = date;
         this.amount = amount;
         this.operation = operation;

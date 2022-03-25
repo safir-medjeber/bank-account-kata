@@ -19,11 +19,11 @@ class AccountTest {
     @Test
     public void deposit_amount_should_increase_balance_account_with_amount() {
         ClientAccount account = new ClientAccount();
-        int depositAmount = 10;
-        int balanceAccountBeforeDeposit = account.balance;
+        double depositAmount = 10.50;
+        double balanceAccountBeforeDeposit = account.balance;
 
         accountService.deposit(account, depositAmount);
-        int currentBalanceAccount = account.balance;
+        double currentBalanceAccount = account.balance;
 
         assertEquals(balanceAccountBeforeDeposit + depositAmount, currentBalanceAccount);
     }
@@ -34,14 +34,14 @@ class AccountTest {
         ClientAccount account = new ClientAccount();
 
 
-        int firstDepositAmount = 10;
-        int secondDepositAmount = 20;
+        double firstDepositAmount = 10;
+        double secondDepositAmount = 20;
 
-        int balanceAccountBeforeDeposit = account.balance;
+        double balanceAccountBeforeDeposit = account.balance;
         accountService.deposit(account, firstDepositAmount);
-        int balanceAccountAfterFirstDeposit = account.balance;
+        double balanceAccountAfterFirstDeposit = account.balance;
         accountService.deposit(account, secondDepositAmount);
-        int balanceAccountAfterSecondDeposit = account.balance;
+        double balanceAccountAfterSecondDeposit = account.balance;
 
         assertEquals(balanceAccountBeforeDeposit + firstDepositAmount, balanceAccountAfterFirstDeposit);
         assertEquals(balanceAccountAfterFirstDeposit + secondDepositAmount, balanceAccountAfterSecondDeposit);
@@ -51,11 +51,11 @@ class AccountTest {
     @Test
     void withdrawal_amount_should_decrease_balance_account_with_amount() {
         ClientAccount account = new ClientAccount();
-        int withdrawal = 10;
-        int balanceAccountBeforeWithdrawal = account.balance;
+        double withdrawal = 10;
+        double balanceAccountBeforeWithdrawal = account.balance;
 
         accountService.withdrawal(account, withdrawal);
-        int currentBalanceAccount = account.balance;
+        double currentBalanceAccount = account.balance;
 
         assertEquals(balanceAccountBeforeWithdrawal - withdrawal, currentBalanceAccount);
     }
@@ -65,14 +65,14 @@ class AccountTest {
     void several_withdrawal_amount_should_decrease_balance_account_with_amounts() {
         ClientAccount account = new ClientAccount();
 
-        int firstWithdrawalAmount = 10;
-        int secondWithdrawalAmount = 20;
+        double firstWithdrawalAmount = 10;
+        double secondWithdrawalAmount = 20;
 
-        int balanceAccountBeforeWithdrawal = account.balance;
+        double balanceAccountBeforeWithdrawal = account.balance;
         accountService.withdrawal(account, firstWithdrawalAmount);
-        int balanceAccountAfterFirstWithdrawal = account.balance;
+        double balanceAccountAfterFirstWithdrawal = account.balance;
         accountService.withdrawal(account, secondWithdrawalAmount);
-        int balanceAccountAfterSecondWithdrawal = account.balance;
+        double balanceAccountAfterSecondWithdrawal = account.balance;
 
         assertEquals(balanceAccountBeforeWithdrawal - firstWithdrawalAmount, balanceAccountAfterFirstWithdrawal);
         assertEquals(balanceAccountAfterFirstWithdrawal - secondWithdrawalAmount, balanceAccountAfterSecondWithdrawal);
@@ -103,7 +103,7 @@ class AccountTest {
     }
 
     @Test
-    public void test_print_account_statement() {
+    public void test_prdouble_account_statement() {
         ClientAccount clientAccount = new ClientAccount();
         accountService.deposit(clientAccount, 10);
         accountService.deposit(clientAccount, 10);

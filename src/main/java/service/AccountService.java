@@ -12,14 +12,18 @@ public class AccountService implements DepositOperations, WithdrawalOperations {
         this.bankStatementService = bankStatementService;
     }
 
-    public void deposit(BankAccount account, int amount) {
+    public void deposit(BankAccount account, double amount) {
         account.balance += amount;
         this.bankStatementService.updateAccountStatement(account, amount, "deposit", ZonedDateTime.now());
     }
 
-    public void withdrawal(BankAccount account, int amount) {
+    public void withdrawal(BankAccount account, double amount) {
         account.balance -= amount;
-        this.bankStatementService.updateAccountStatement(account, Math.negateExact(amount) , "withdrawal",ZonedDateTime.now() );
+        this.bankStatementService.updateAccountStatement(account, getNegativeAmount(amount) , "withdrawal",ZonedDateTime.now() );
+    }
+
+    private double getNegativeAmount(double amount) {
+    return -amount;
     }
 
 }
