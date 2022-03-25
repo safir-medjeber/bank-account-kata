@@ -1,8 +1,9 @@
 package model;
 
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class BankAccount {
     public double balance;
-    public Queue<AccountStatement> accountStatements;
+    public LinkedList<AccountStatement> accountStatements;
 }

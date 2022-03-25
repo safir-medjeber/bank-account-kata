@@ -51,7 +51,7 @@ class AccountTest {
     @Test
     void withdrawal_amount_should_decrease_balance_account_with_amount() {
         ClientAccount account = new ClientAccount();
-        double withdrawal = 10;
+        double withdrawal = 10.33;
         double balanceAccountBeforeWithdrawal = account.balance;
 
         accountService.withdrawal(account, withdrawal);
@@ -65,8 +65,8 @@ class AccountTest {
     void several_withdrawal_amount_should_decrease_balance_account_with_amounts() {
         ClientAccount account = new ClientAccount();
 
-        double firstWithdrawalAmount = 10;
-        double secondWithdrawalAmount = 20;
+        double firstWithdrawalAmount = 10.5;
+        double secondWithdrawalAmount = 20.50;
 
         double balanceAccountBeforeWithdrawal = account.balance;
         accountService.withdrawal(account, firstWithdrawalAmount);
@@ -82,9 +82,9 @@ class AccountTest {
     void deposit_should_update_account_statement() {
 
         ClientAccount clientAccount = new ClientAccount();
-        accountService.deposit(clientAccount, 10);
+        accountService.deposit(clientAccount, 10.33);
 
-        assertEquals(clientAccount.accountStatements.peek() != null ? clientAccount.accountStatements.peek().getAmount() : 0, 10);
+        assertEquals(clientAccount.accountStatements.peek() != null ? clientAccount.accountStatements.peek().getAmount() : 0, 10.33);
         assertEquals(clientAccount.accountStatements.peek() != null ? clientAccount.accountStatements.peek().getOperation() : null, "deposit");
 
 
