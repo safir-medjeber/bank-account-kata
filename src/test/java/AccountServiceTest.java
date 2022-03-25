@@ -22,7 +22,7 @@ class AccountServiceTest {
 
     @Test
     public void deposit_amount_should_increase_balance_account_with_amount() {
-        PersonalAccount account = new PersonalAccount();
+        var account = new PersonalAccount();
 
         accountService.deposit(account, 10.50);
 
@@ -31,7 +31,7 @@ class AccountServiceTest {
 
     @Test
     public void several_deposit_amount_should_increase_balance_account_with_amounts() {
-        PersonalAccount account = new PersonalAccount();
+        var account = new PersonalAccount();
 
         accountService.deposit(account, 10);
         assertEquals(10, account.getBalance());
@@ -42,7 +42,7 @@ class AccountServiceTest {
 
     @Test
     void withdrawal_amount_should_decrease_balance_account_with_amount() {
-        PersonalAccount personalAccount = new PersonalAccount();
+        var personalAccount = new PersonalAccount();
 
         accountService.withdrawal(personalAccount, 10.33);
 
@@ -51,7 +51,7 @@ class AccountServiceTest {
 
     @Test
     void several_withdrawal_amount_should_decrease_balance_account_with_amounts() {
-        PersonalAccount account = new PersonalAccount();
+        var account = new PersonalAccount();
 
         accountService.withdrawal(account, 10.5);
         assertEquals(-10.5, account.getBalance());
@@ -62,7 +62,7 @@ class AccountServiceTest {
 
     @Test
     void deposit_should_update_account_statement() {
-        PersonalAccount personalAccount = new PersonalAccount();
+        var personalAccount = new PersonalAccount();
 
         accountService.deposit(personalAccount, 10.33);
 
@@ -74,7 +74,7 @@ class AccountServiceTest {
 
     @Test
     void withdrawal_should_update_account_statement() {
-        PersonalAccount personalAccount = new PersonalAccount();
+        var personalAccount = new PersonalAccount();
 
         accountService.withdrawal(personalAccount, 10);
 
@@ -86,7 +86,7 @@ class AccountServiceTest {
 
     @Test
     public void test_print_account_statement() {
-        PersonalAccount personalAccount = new PersonalAccount();
+        var personalAccount = new PersonalAccount();
         accountService.deposit(personalAccount, 10);
         accountService.deposit(personalAccount, 10);
 
