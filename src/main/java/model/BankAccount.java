@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.LinkedList;
 
 public class BankAccount {
+
     protected BigDecimal balance = BigDecimal.ZERO;
     protected LinkedList<AccountStatement> accountStatements = new LinkedList<>();
 

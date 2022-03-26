@@ -11,7 +11,7 @@ import static model.BankOperationType.WITHDRAWAL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class StatetementServiceTest {
+class StatementServiceTest {
 
     private AccountService accountService;
     private StatementService statementService;
