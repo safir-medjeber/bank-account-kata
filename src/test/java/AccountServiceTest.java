@@ -24,7 +24,7 @@ class AccountServiceTest {
 
         accountService.deposit(personalAccount, BigDecimal.valueOf(10.50));
 
-        assertEquals(10.50, personalAccount.getBalance());
+        assertEquals(BigDecimal.valueOf(10.5).stripTrailingZeros(), personalAccount.getBalance().stripTrailingZeros());
     }
 
     @Test
@@ -32,10 +32,10 @@ class AccountServiceTest {
         var personalAccount = new PersonalAccount();
 
         accountService.deposit(personalAccount, BigDecimal.valueOf(10));
-        assertEquals(10, personalAccount.getBalance());
+        assertEquals(BigDecimal.valueOf(10).stripTrailingZeros(), personalAccount.getBalance().stripTrailingZeros());
 
         accountService.deposit(personalAccount, BigDecimal.valueOf(20));
-        assertEquals( 30, personalAccount.getBalance());
+        assertEquals( BigDecimal.valueOf(30).stripTrailingZeros(), personalAccount.getBalance().stripTrailingZeros());
     }
 
     @Test
@@ -44,7 +44,7 @@ class AccountServiceTest {
 
         accountService.withdrawal(personalAccount, BigDecimal.valueOf(10.33));
 
-        assertEquals(-10.33, personalAccount.getBalance());
+        assertEquals(BigDecimal.valueOf(-10.33).stripTrailingZeros(), personalAccount.getBalance().stripTrailingZeros());
     }
 
     @Test
@@ -52,9 +52,9 @@ class AccountServiceTest {
         var account = new PersonalAccount();
 
         accountService.withdrawal(account, BigDecimal.valueOf(10.5));
-        assertEquals(-10.5, account.getBalance());
+        assertEquals(BigDecimal.valueOf(-10.5).stripTrailingZeros(), account.getBalance().stripTrailingZeros());
 
         accountService.withdrawal(account, BigDecimal.valueOf(20.50));
-        assertEquals(-31.0, account.getBalance());
+        assertEquals(BigDecimal.valueOf(-31.0).stripTrailingZeros(), account.getBalance().stripTrailingZeros());
     }
 }

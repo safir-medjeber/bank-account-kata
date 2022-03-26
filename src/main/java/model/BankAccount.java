@@ -1,16 +1,17 @@
 package model;
 
+import java.math.BigDecimal;
 import java.util.LinkedList;
 
 public class BankAccount {
-    protected double balance;
+    protected BigDecimal balance = BigDecimal.ZERO;
     protected LinkedList<AccountStatement> accountStatements = new LinkedList<>();
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 

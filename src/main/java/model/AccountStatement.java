@@ -5,12 +5,12 @@ import java.time.ZonedDateTime;
 
 public class AccountStatement {
 
-    private final double currentBalance;
+    private final BigDecimal currentBalance;
     private final BankOperationType bankOperationType;
     private final ZonedDateTime date;
     private final BigDecimal amount;
 
-    public AccountStatement(BankOperationType bankOperationType, ZonedDateTime date, BigDecimal amount, double currentBalance) {
+    public AccountStatement(BankOperationType bankOperationType, ZonedDateTime date, BigDecimal amount, BigDecimal currentBalance) {
         this.bankOperationType = bankOperationType;
         this.date = date;
         this.amount = amount;

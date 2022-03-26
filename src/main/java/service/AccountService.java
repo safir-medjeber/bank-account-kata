@@ -16,12 +16,12 @@ public class AccountService implements DepositOperations, WithdrawalOperations {
     }
 
     public void deposit(BankAccount bankAccount, BigDecimal amount) {
-        bankAccount.setBalance(bankAccount.getBalance() + amount.doubleValue());
+        bankAccount.setBalance(bankAccount.getBalance().add(amount));
         this.bankStatementService.updateAccountStatement(bankAccount, amount, DEPOSIT, ZonedDateTime.now());
     }
 
     public void withdrawal(BankAccount bankAccount, BigDecimal amount) {
-        bankAccount.setBalance(bankAccount.getBalance() - amount.doubleValue());
+        bankAccount.setBalance(bankAccount.getBalance().subtract(amount));
         this.bankStatementService.updateAccountStatement(bankAccount, amount.negate() , WITHDRAWAL,ZonedDateTime.now());
     }
 }
