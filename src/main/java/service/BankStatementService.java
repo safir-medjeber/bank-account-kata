@@ -10,5 +10,5 @@ public interface BankStatementService {
 
      void updateAccountStatement(BankAccount account, BigDecimal amount, BankOperationType operation, ZonedDateTime zonedDateTime);
 
-     void printAccountStatement(BankAccount bankAccount);
+     String printAccountStatement(BankAccount bankAccount);
 }

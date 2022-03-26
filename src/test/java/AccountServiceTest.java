@@ -24,11 +24,11 @@ class AccountServiceTest {
 
     @Test
     public void deposit_amount_should_increase_balance_account_with_amount() {
-        var account = new PersonalAccount();
+        var personalAccount = new PersonalAccount();
 
-        accountService.deposit(account, BigDecimal.valueOf(10.50));
+        accountService.deposit(personalAccount, BigDecimal.valueOf(10.50));
 
-        assertEquals(10.50, account.getBalance());
+        assertEquals(10.50, personalAccount.getBalance());
     }
 
     @Test
@@ -82,7 +82,6 @@ class AccountServiceTest {
 
         var headAccountStatement = personalAccount.getAccountStatements().peek();
         assertNotNull(headAccountStatement);
-
         assertEquals(BigDecimal.valueOf(-10).stripTrailingZeros(), headAccountStatement.getAmount().stripTrailingZeros());
         assertEquals(WITHDRAWAL, headAccountStatement.getBankOperationType());
     }
@@ -90,10 +89,12 @@ class AccountServiceTest {
     @Test
     public void test_print_account_statement() {
         var personalAccount = new PersonalAccount();
-
         accountService.deposit(personalAccount, BigDecimal.valueOf(10));
         accountService.deposit(personalAccount, BigDecimal.valueOf(10));
+        String accountStatementExpected = personalAccount.getAccountStatements().toString();
 
-        statementService.printAccountStatement(personalAccount);
+        String accountStatementPrinted = statementService.printAccountStatement(personalAccount);
+
+        assertEquals(accountStatementExpected, accountStatementPrinted);
     }
 }

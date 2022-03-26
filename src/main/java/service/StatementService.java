@@ -16,7 +16,8 @@ public class StatementService implements BankStatementService {
     }
 
     @Override
-    public void printAccountStatement(BankAccount bankAccount) {
+    public String printAccountStatement(BankAccount bankAccount) {
         bankAccount.getAccountStatements().forEach(System.out::println);
+        return bankAccount.getAccountStatements().toString();
     }
 }
